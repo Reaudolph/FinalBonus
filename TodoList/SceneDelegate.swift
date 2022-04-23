@@ -1,10 +1,4 @@
-//
-//  SceneDelegate.swift
-//  TodoList
-//
-//  Created by Sam Meech-Ward on 2020-05-14.
-//  Copyright © 2020 meech-ward. All rights reserved.
-//
+
 
 import UIKit
 

@@ -1,10 +1,3 @@
-//
-//  CheckTableViewCell.swift
-//  TodoList
-//
-//  Created by Sam Meech-Ward on 2020-05-14.
-//  Copyright © 2020 meech-ward. All rights reserved.
-//
 
 import UIKit
 
@@ -21,7 +14,7 @@ class CheckTableViewCell: UITableViewCell {
 
   
   @IBAction func checked(_ sender: Checkbox) {
-    updateChecked()
+   
     delegate?.checkTableViewCell(self, didChagneCheckedState: checkbox.checked)
   }
   
@@ -32,20 +25,9 @@ class CheckTableViewCell: UITableViewCell {
   
   func set(checked: Bool) {
     checkbox.checked = checked
-    updateChecked()
   }
   
-  private func updateChecked() {
-    let attributedString = NSMutableAttributedString(string: label.text!)
-    
-    if checkbox.checked {
-      attributedString.addAttribute(.strikethroughStyle, value: 2, range: NSMakeRange(0, attributedString.length-1))
-    } else {
-      attributedString.removeAttribute(.strikethroughStyle, range: NSMakeRange(0, attributedString.length-1))
-    }
-    
-    label.attributedText = attributedString
-  }
+ 
   
 
 }

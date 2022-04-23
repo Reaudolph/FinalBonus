@@ -1,25 +1,16 @@
-//
-//  ViewController.swift
-//  TodoList
-//
-//  Created by Sam Meech-Ward on 2020-05-14.
-//  Copyright © 2020 meech-ward. All rights reserved.
-//
 
 import UIKit
 
 class ViewController: UIViewController {
   
   var todos = [
-    Todo(title: "Make vanilla pudding."),
-    Todo(title: "Put pudding in a mayo jar."),
-    Todo(title: "Eat it in a public place."),
+    Todo(title: "Enter a new item"),
   ]
 
   @IBOutlet weak var tableView: UITableView!
   override func viewDidLoad() {
+      self.title = "Tasks"
     super.viewDidLoad()
-    // Do any additional setup after loading the view.
   }
 
   @IBAction func startEditing(_ sender: Any) {
@@ -44,24 +35,7 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate {
   
-  func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
     
-    let action = UIContextualAction(style: .normal, title: "Complete") { action, view, complete in
-      
-      let todo = self.todos[indexPath.row].completeToggled()
-      self.todos[indexPath.row] = todo
-      
-      let cell = tableView.cellForRow(at: indexPath) as! CheckTableViewCell
-      cell.set(checked: todo.isComplete)
-      
-      complete(true)
-      
-      print("complete")
-    }
-    
-    return UISwipeActionsConfiguration(actions: [action])
-  }
-  
   func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
     return .delete
   }
@@ -83,17 +57,11 @@ extension ViewController: UITableViewDataSource {
     
     let todo = todos[indexPath.row]
     
-    cell.set(title: todo.title, checked: todo.isComplete)
+    cell.set(title: todo.userText, checked: todo.isComplete)
     
     return cell
   }
   
-  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    if editingStyle == .delete {
-      todos.remove(at: indexPath.row)
-      tableView.deleteRows(at: [indexPath], with: .automatic)
-    }
-  }
   
   func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
     let todo = todos.remove(at: sourceIndexPath.row)
@@ -109,9 +77,8 @@ extension ViewController: CheckTableViewCellDelegate {
       return
     }
     let todo = todos[indexPath.row]
-    let newTodo = Todo(title: todo.title, isComplete: checked)
-    
-    todos[indexPath.row] = newTodo
+      todos.remove(at: indexPath.row)
+      tableView.deleteRows(at: [indexPath], with: .automatic)
   }
   
 }
@@ -124,11 +91,9 @@ extension ViewController: TodoViewControllerDelegate {
     
     dismiss(animated: true) {
       if let indexPath = self.tableView.indexPathForSelectedRow {
-        // update
         self.todos[indexPath.row] = todo
         self.tableView.reloadRows(at: [indexPath], with: .none)
       } else {
-        // create
         self.todos.append(todo)
         self.tableView.insertRows(at: [IndexPath(row: self.todos.count-1, section: 0)], with: .automatic)
       }

@@ -1,10 +1,3 @@
-//
-//  Checkbox.swift
-//  Checking
-//
-//  Created by Sam Meech-Ward on 2020-05-13.
-//  Copyright © 2020 meech-ward. All rights reserved.
-//
 
 import UIKit
 
@@ -16,23 +9,14 @@ class Checkbox: UIControl {
   private var image: UIImage {
     return checked ? UIImage(systemName: "checkmark.square.fill")! : UIImage(systemName: "square")!
   }
-  
-  @IBInspectable
-  public var checked: Bool = false {
-    didSet {
-      imageView.image = image
-    }
-  }
+
   
   override init(frame: CGRect) {
     super.init(frame: frame)
     setup()
   }
   
-  required init?(coder: NSCoder) {
-    super.init(coder: coder)
-    setup()
-  }
+ 
   
   private func setup() {
     let imageView = UIImageView()
@@ -58,5 +42,16 @@ class Checkbox: UIControl {
     checked = !checked
     sendActions(for: .valueChanged)
   }
+    required init?(coder: NSCoder) {
+      super.init(coder: coder)
+      setup()
+    }
+    
+    @IBInspectable
+    public var checked: Bool = false {
+      didSet {
+        imageView.image = image
+      }
+    }
   
 }

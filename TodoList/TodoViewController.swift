@@ -1,10 +1,4 @@
-//
-//  TodoViewController.swift
-//  TodoList
-//
-//  Created by Sam Meech-Ward on 2020-05-14.
-//  Copyright © 2020 meech-ward. All rights reserved.
-//
+
 
 import UIKit
 
@@ -22,7 +16,7 @@ class TodoViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    textfield.text = todo?.title
+    textfield.text = todo?.userText
   }
     
   @IBAction func save(_ sender: Any) {
