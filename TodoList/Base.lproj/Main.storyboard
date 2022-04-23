@@ -121,8 +121,8 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHE-Rb-HPp">
-                                <rect key="frame" x="362" y="64" width="18" height="22"/>
-                                <state key="normal" image="arrow.down.doc" catalog="system"/>
+                                <rect key="frame" x="360" y="64" width="20" height="22"/>
+                                <state key="normal" image="pencil.circle" catalog="system"/>
                                 <connections>
                                     <action selector="save:" destination="4g4-kv-1vj" eventType="touchUpInside" id="NHf-jZ-SkD"/>
                                 </connections>
@@ -149,10 +149,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qo9-Be-3es"/>
+        <segue reference="AVE-vg-L4K"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="arrow.down.doc" catalog="system" width="115" height="128"/>
+        <image name="pencil.circle" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
